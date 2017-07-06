@@ -1,0 +1,9 @@
+<div class="publication-container" 
+  *ngIf="publication"
+  [ngClass]="{'collapsed': !isMounted}"
+  [hidden]="!isMounted"  
+>
+  <div class="publication-content">
+    <kio-content-router [node]="publication"></kio-content-router>
+  </div>
+</div>

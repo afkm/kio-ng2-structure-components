@@ -1,0 +1,21 @@
+<div class="router-container" [ngStyle]="containerStyle">
+
+    <ng-container *ngIf="!!publicationData">
+        <ng-container *ngFor="let chapter of publicationData.children">
+            <!-- <h4>{{ chapter.cuid }}</h4> -->
+
+            <kio-content-router (stateChanges)="routerStateChanges(chapter,$event)" [node]="chapter"></kio-content-router>
+
+        </ng-container>
+    </ng-container>
+
+    <!-- <scroll-container class="router-content">
+        <template ngFor let-chapter [ngForOf]="publicationData.children">
+            <scroll-zone-wrapper [context]="chapter" #scrollWrapper>
+                <kio-content-router #fragmentFrame [node]="chapter"></kio-content-router>
+            </scroll-zone-wrapper>
+        </template>
+    </scroll-container>  -->
+</div>
+<div class="router-message router-error" [hidden]="!hasError"></div>
+<div class="router-message router-loader" [hidden]="!isLoading"></div>

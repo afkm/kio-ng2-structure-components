@@ -1,0 +1,21 @@
+<div class="kio-sidebar" [ngClass]="{'is-open': isOpen}">
+
+    <div class="kio-sidebar__handle">
+        <div class="inner">
+            <ui-button [icon]="'burger'" (click)="toggleSidebarState($event)"></ui-button>
+        </div>
+    </div>
+
+
+    <div class="kio-sidebar__body">
+        <div class="kio-sidebar__content">
+            <div class="close">
+                <ui-button [icon]="'close'" (click)="toggleSidebarState($event)"></ui-button>
+            </div>
+
+            <div class="kio-sidebar__inner">
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+</div>

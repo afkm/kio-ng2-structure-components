@@ -1,0 +1,119 @@
+@import "../../../../scss/utils";
+
+
+.kio-sidebar__body {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    z-index: 20;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    transition: transform .3s ease-out 0s,-webkit-transform .3s ease-out 0s;
+
+
+    .kio-sidebar__content {
+        position: relative;
+        flex-direction: column;
+        padding: $row-gutter $column-gutter;
+        width: 85vw;
+        background: $color-background-black;
+
+        @media #{$medium-up} {
+            width: 45vw;
+        }
+
+
+        * {
+            color: $color-font-bright;
+        }
+
+        .close {
+            position: absolute;
+            top: $row-gutter;
+            right: $column-gutter;
+            z-index: 20;
+
+            @media #{$medium-up} {
+                top: $row-gutter*2;
+                right: $column-gutter*2;
+            }
+
+            .ui-button {
+                width: rem-calc(30);
+                height: rem-calc(30);
+            }
+        }
+    }
+
+    .kio-sidebar__inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        height: 100%;
+    }
+
+    .is-open & {
+        transform: translate(-100%,0)
+    }
+}
+
+.kio-sidebar__handle {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 19;
+    overflow: visible;
+    width: 100%;
+    height: 0;
+
+    .inner {
+        margin: 0 auto;
+        padding: 0 $column-gutter;
+        max-width: $container-width;
+        transition: max-width 0.4s ease-out 0s;
+
+        will-change: max-width;
+
+        .is-scrolled-100 & {
+            max-width: 100vw;
+        }
+    }
+
+    .g-row,
+    [class^="g-col"] {
+        overflow: visible;
+        height: 0;
+    }
+
+    .ui-button {
+        float: right;
+        margin-top: $row-gutter;
+        width: rem-calc(40);
+        height: rem-calc(40);
+
+        @media #{$medium-up} {
+            margin-top: $row-gutter*2;
+            transition: margin-top 0.3s ease-out 0s;
+
+            will-change: margin-top;
+
+            .is-scrolled-100 & {
+                margin-top: $row-gutter;
+            }
+        }
+
+        svg path {
+            transition: fill 0.3s ease-out 0s;
+
+            will-change: fill;
+            .is-scrolled-100 & {
+                fill: $color-font-dark;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,7 @@
+<h4 class="afkm-debug">Static content: {{ globalsKey }}</h4>
+<ng-container *ngIf="error">
+  <h5>Error</h5>
+  <p>{{ error }}</p>
+</ng-container>
+<kio-content-router (stateChanges)="onContentRouterStateChange($event)" *ngIf="node" [node]="node"></kio-content-router>
+<!-- <kio-content-router [node]="chapter"></kio-content-router> -->

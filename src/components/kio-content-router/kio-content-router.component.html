@@ -1,0 +1,18 @@
+<ng-container [ngSwitch]="routedIndex">
+  <ng-container *ngSwitchCase="-1">
+    <!-- <h5>{{ contentLink }}</h5> -->
+    <ng-container *ngIf="isFragment||hasData">
+      <kio-list [node]="node"></kio-list>
+    </ng-container>
+    <div *ngIf="node&&!isFragment" class="unmatched-content">
+      <h4>Failed find matching Component for {{ node.type }} node</h4>
+      <div class="node-prop prop-cuid"><span class="prop-label">cuid</span><span class="prop-value">{{ node.cuid }}</span></div>
+      <div class="node-prop prop-type"><span class="prop-label">type</span><span class="prop-value">{{ node.type }}</span></div>
+      <div class="node-prop prop-modifiers"><span class="prop-label">modifiers</span><span class="prop-value">{{ node.modifiers.join(', ') }}</span></div>
+    </div>
+  </ng-container>
+</ng-container>
+<ng-container *ngIf="!!componentError">
+  <p class="router-error">{{ componentError }}</p>
+</ng-container>
+<div #mountPoint></div>
